@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>project_page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <link rel="stylesheet" type="text/css" href="project.css">
+    </head>
+
+    <body>
+        <div class="add-project-button-container">
+            <h1>Project Management</h1>
+            <button class="button add-project-button" onclick="addProject()">Add Project</button>
+        </div>
+
+        <div class="container">
+            <ul>
+                <li>
+                    <div class="project-details">
+                        <span class="project-name">Project 1</span>
+                        <input type="text" class="edit-input" value="Project 1">
+                    </div>
+                    <div class="project-actions">
+                        <button class="button edit-button">Rename</button>
+                        <button class="button delete-button">Delete</button>
+                        <button class="button save-button" style="display: none;">Save</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="project-details">
+                        <span class="project-name">Project 2</span>
+                        <input type="text" class="edit-input" value="Project 2">
+                    </div>
+                    <div class="project-actions">
+                        <button class="button edit-button">Rename</button>
+                        <button class="button delete-button">Delete</button>
+                        <button class="button save-button" style="display: none;">Save</button>
+                    </div>
+                </li>
+                <!-- Add more projects as needed -->
+            </ul>
+        </div>
+
+        <script>
+            // Function to toggle the edit mode for project names
+            function toggleEdit(element) {
+                const form = element.parentElement.parentElement;
+                const projectDetails = form.querySelector('.project-details');
+                const proejctActions = form.querySelector('.project-actions');
+                const projectName = projectDetails.querySelector('.project-name');
+                const editInput = projectDetails.querySelector('.edit-input');
+                const editButton = proejctActions.querySelector('.edit-button');
+                const saveButton = proejctActions.querySelector('.save-button');
+
+                editInput.value = projectName.textContent;
+                projectName.style.display = 'none';
+                editInput.style.display = 'block';
+                editButton.style.display = 'none';
+                saveButton.style.display = 'inline-block';
+            }
+
+            // Function to save the edited project name
+            function saveEdit(element) {
+                const form = element.parentElement.parentElement;
+                const projectDetails = form.querySelector('.project-details');
+                const proejctActions = form.querySelector('.project-actions');
+                const projectName = projectDetails.querySelector('.project-name');
+                const editInput = projectDetails.querySelector('.edit-input');
+                const editButton = proejctActions.querySelector('.edit-button');
+                const saveButton = proejctActions.querySelector('.save-button');
+
+                projectName.textContent = editInput.value;
+                projectName.style.display = 'inline-block';
+                editInput.style.display = 'none';
+                editButton.style.display = 'inline-block';
+                saveButton.style.display = 'none';
+            }
+
+            function deleteProject(element) {
+                const listItem = element.closest('li');
+                const projectName = listItem.querySelector('.project-name').textContent;
+
+                // Ask for confirmation
+                const confirmation = confirm(`Are you sure you want to delete "${projectName}"?`);
+                
+                if (confirmation) {
+                    // User confirmed, delete the project
+                    listItem.remove();
+                }
+            }
+
+            // Function to add a new project
+            function addProject() {
+                const projectList = document.querySelector('ul');
+                const newProjectItem = document.createElement('li');
+                newProjectItem.innerHTML = `
+                    <div class="project-details">
+                        <span class="project-name">New Project</span>
+                        <input type="text" class="edit-input" value="New Project">
+                    </div>
+                    <div class="project-actions">
+                        <button class="button edit-button">Rename</button>
+                        <button class="button delete-button">Delete</button>
+                        <button class="button save-button">Save</button>
+                    </div>
+                `;
+                projectList.appendChild(newProjectItem);
+                functionButtonAllocation();
+            }
+
+            function functionButtonAllocation(){
+                // Add event listeners to edit buttons
+                const editButtons = document.querySelectorAll('.edit-button');
+                    editButtons.forEach(button => {
+                        button.addEventListener('click', () => toggleEdit(button));
+                });
+
+                // Add event listeners to save buttons
+                const saveButtons = document.querySelectorAll('.save-button');
+                saveButtons.forEach(button => {
+                    button.addEventListener('click', () => saveEdit(button));
+                });
+
+                const deleteButtons = document.querySelectorAll('.delete-button');
+                deleteButtons.forEach(button => {
+                    button.addEventListener('click', () => deleteProject(button));
+                });
+            }
+
+            functionButtonAllocation();
+            
+        </script>
+    </body>
+</html>

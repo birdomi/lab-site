@@ -1,0 +1,97 @@
+/* Your CSS styles here */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-name {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.project-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.edit-input {
+    display: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.edit-mode .project-name {
+    display: none;
+}
+
+.edit-mode .edit-input {
+    display: block;
+}
+
+/* Add Project Button Styles */
+.add-project-button {
+    background-color: #28a745;
+}
+
+.add-project-button:hover {
+    background-color: #218838;
+}
+
+.add-project-button-container {
+    text-align: center;
+}

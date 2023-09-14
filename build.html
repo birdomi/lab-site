@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Title with No Margin</title>
+
+        <link rel="stylesheet" type="text/css" href="build.css">
+    </head>
+    <body>    
+        <!-- Your content goes here -->
+
+        <div class="container">
+            <form id="architectureForm">
+                <label for="architecture">Choose an architecture:</label>
+                <select id="architecture" name="architecture">
+                    <option value="resnet18">ResNet18</option>
+                    <option value="resnet50">ResNet50</option>
+                    <!-- Add more architecture options as needed -->
+                </select>
+        
+                <!-- <button type="submit" value="Train"> -->
+                <button type="submit">Start Training</button>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById('architectureForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission (for this example)
+    
+                const selectedArchitecture = document.getElementById('architecture').value;
+                alert(`You selected ${selectedArchitecture} for training.`);
+                // You can perform further actions based on the selected architecture here.
+            });
+        </script>
+    </body>
+</html>

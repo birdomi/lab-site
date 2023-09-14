@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>main</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+
+    <body>
+        <div class="title-container">
+            <div class="title-text">
+                <h1>LBA SITE 1</h1>
+            </div>
+        </div>
+
+        <div class="contents">
+            <div class="leftcolumn">
+                <button class="image-button" id="projectButton">
+                    <img src="imgs/a.png" alt="Image Alt Text" class="button-image"> PROJECT
+                </button>
+
+                <button class="image-button" id="curationButton">
+                    <img src="imgs/a.png" alt="Image Alt Text" class="button-image"> DATA CURATION
+                </button>
+
+                <button class="image-button" id="buildButton">
+                    <img src="imgs/a.png" alt="Image Alt Text" class="button-image"> BUILD
+                </button>
+                
+                <button class="image-button" id="deployButton">
+                    <img src="imgs/a.png" alt="Image Alt Text" class="button-image"> DEPLOY
+                </button>
+            </div>
+
+            <div class="rightcolumn">
+                <iframe id="iFrame" src="project.html"></iframe>
+            </div>
+        </div>
+
+        <script>
+            // Get references to the button and iframe
+        const projectSrcButton = document.getElementById('projectButton');
+        const buildSrcButton = document.getElementById('buildButton');
+        const curationSrcButton = document.getElementById('curationButton');
+        const deploySrcButton = document.getElementById('deployButton');
+
+
+        const myIframe = document.getElementById('iFrame');
+
+        // Add a click event listener to the button
+        projectSrcButton.addEventListener('click', function() {
+            // Change the src attribute of the iframe
+            myIframe.src = 'project.html';
+        });
+        buildSrcButton.addEventListener('click', function() {
+            // Change the src attribute of the iframe
+            myIframe.src = 'build.html';
+        });
+        curationSrcButton.addEventListener('click', function() {
+            // Change the src attribute of the iframe
+            myIframe.src = 'data_curation.html';
+        });
+        deploySrcButton.addEventListener('click', function() {
+            // Change the src attribute of the iframe
+            myIframe.src = 'deploy.html';
+        });
+        </script>
+
+    </body>
+</html>

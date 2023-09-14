@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>project_page</title>
+
+        <link rel="stylesheet" type="text/css" href="data_curation.css">
+    </head>
+
+    <body>
+        <!-- <h1>Data curation page</h1> -->
+        <div class="container">
+            <h1>DATA CURATION</h1>
+            <input type="file" id="labeldInput" webkitdirectory multiple style="display: none;">
+            <button class="image-button" id="labeldInputButton" onclick="selectDirectory()">
+                <img src="imgs/a.png" alt="Image Alt Text" class="button-image"> Add Labeld Data
+            </button>
+
+            <button class="image-button" id="unlabeldInputButton" onclick="selectDirectory()">
+                <img src="imgs/a.png" alt="Image Alt Text" class="button-image"> Add Unlabeld Data
+            </button>
+
+            <button class="image-button" id="unlabeldInputButton" onclick="removeAllData()">
+                <img src="imgs/a.png" alt="Image Alt Text" class="button-image"> Remove All Data
+            </button>        
+        </div>
+
+        <ul class="pretty-list" id="fileList"></ul>
+
+        <script>
+            // Function to display the directory listing
+            function displayDirectoryListing(data) {
+                const directoryList = document.getElementById('fileList');
+                // console.log(directoryList);
+                // data.forEach(item =>
+                
+                for (i=0;i<data.length;i++){
+                    item = data[i]
+                    const listItem = document.createElement('li');
+                    const image = document.createElement('img');
+                    const span = document.createElement('span');
+
+                    // listItem.textContent = item.name;
+                    listItem.className="pretty-list-item";
+
+                    image.width = 32;
+                    image.height = 32;
+
+                    if (item.type === 'folder') {
+                        image.src = 'folder-icon.png'; // Replace with your folder icon URL
+                    } else {
+                        image.src = item.webkitRelativePath; // Replace with your file icon URL
+                    }
+                    span.textContent = item.name;
+                    listItem.append(image);
+                    listItem.append(span);
+
+                    // const button = 
+                    // listitem.appendChild()
+                    
+                    if (item.type === 'folder') {
+                        listItem.classList.add('folder');
+                    }
+
+                    directoryList.appendChild(listItem);
+                };
+            }
+
+            function selectDirectory() {
+                const directoryInput = document.getElementById('labeldInput');
+                directoryInput.click(); // Trigger the file input click event
+                directoryInput.addEventListener('change', function () {
+                    const selectedDirectory = directoryInput.files;
+                    const text = "";
+                    if (selectedDirectory) {
+                        displayDirectoryListing(selectedDirectory);
+                    }
+                });
+            }        
+
+            function removeAllData(){
+                const directoryList = document.getElementById('fileList');
+                var children = [].slice.call(directoryList.children);
+
+                // Ask for confirmation
+                const confirmation = confirm(`Are you sure you want to delete all data?`);
+                
+                if (confirmation) {
+                    // User confirmed, delete the data
+                    children.forEach(element => {
+                    // console.log(children);
+                    element.remove()
+                    });
+                }
+                
+            }
+
+            function removeSelf(button){
+                const listItem = button.parentElement;
+                                
+                
+                listItem.remove();
+            }
+        </script>
+    </body>
+</html>
